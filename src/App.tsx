@@ -1,24 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Registration from './components/Registration/Registration';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import Login from './components/Login/Login';
+import MainPage from './components/MainPage/MainPage';
+import { useUser } from './context/UserContext';
+import ChatPage from './components/ChatPage/ChatPage';
 
 function App() {
+
+  const {user} = useUser() 
+  console.log(user)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Routes>
+      {user ? (<><Route path='/chat' element={<ChatPage/>}/> <Route path='*' element={<Navigate to={"/chat"} />}/></>):
+      (<> <Route path="/" element={<MainPage/>}/>
+      <Route path="/signUp" element={<Registration/>}/>
+      <Route path="/signIn" element={<Login/>}/>
+      <Route path='*' element={<Navigate to={"/"} />}/>
+      </>)}
+    </Routes>
     </div>
   );
 }

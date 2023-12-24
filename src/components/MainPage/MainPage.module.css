@@ -1,0 +1,15 @@
+
+.main {
+    height: 100vh;
+    background-color:  #102C54;
+}
+
+.header {
+    background-color:  #021c4188;
+    height: 10%;
+    
+}
+
+.header button {
+    padding: 10px;
+}
