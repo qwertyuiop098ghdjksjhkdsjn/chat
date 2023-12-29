@@ -1,15 +1,18 @@
 
 .main {
-    height: 100vh;
+    min-height: 100vh;
     background-color:  #102C54;
 }
 
 .header {
     background-color:  #021c4188;
-    height: 10%;
-    
+    padding: 20px;
+    /* text-align: right; */
+    display: flex;
+    justify-content: flex-end;
 }
 
 .header button {
     padding: 10px;
+    margin-left: 10px;
 }

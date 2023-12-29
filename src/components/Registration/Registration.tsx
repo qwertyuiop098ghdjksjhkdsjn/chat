@@ -27,7 +27,7 @@ function Registration () {
         });
   
         await setDoc(doc(db, "userChats", response.user.uid), {});
-        // ...
+        
     }
 
     return (

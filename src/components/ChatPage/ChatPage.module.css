@@ -1,0 +1,13 @@
+
+.container {
+    background-color:  #102C54;
+    min-height: 100vh;
+}
+
+.main {
+    width: 25%;
+    height: 100vh;
+    /* background-color:  #ffffff37;
+    background-color:  #ffffff39; */
+    background-color:  #4a6fa388;
+}
