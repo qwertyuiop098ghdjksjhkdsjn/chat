@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="App">
     <Routes>
-      {user ? (<><Route path='/chat' element={<ChatPage/>}/> <Route path='*' element={<Navigate to={"/chat"} />}/></>):
+      {user ? (<><Route path='/chat' element={<ChatPage/>}/> <Route path='/chat/:chatID' element={<ChatPage/>}/> <Route path='*' element={<Navigate to={"/chat"} />}/></>):
       (<> <Route path="/" element={<MainPage/>}/>
       <Route path="/signUp" element={<Registration/>}/>
       <Route path="/signIn" element={<Login/>}/>

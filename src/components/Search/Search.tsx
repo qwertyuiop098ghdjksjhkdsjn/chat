@@ -1,11 +1,16 @@
 import { useState } from "react"
-import {query, collection, where, getDocs} from "firebase/firestore"
+import {query, collection, where, getDocs,getDoc, doc, updateDoc, setDoc} from "firebase/firestore"
 import {db} from "./../../fireBase"
 import {UserInfo} from "./../../types/types";
 import styles from "./Search.module.css"
 import picture from "./../../images/search.svg"
+import { useNavigate } from "react-router-dom";
+import { useUser } from "../../context/UserContext";
 
 function Search () {
+
+    const navigate = useNavigate()
+
 
     const [input, setInput] = useState("");
 
@@ -38,8 +43,52 @@ function Search () {
       setInput("")
 
     }
-
     
+   const {user: currentUser} = useUser() //information about user from the context
+
+    const handleSelect = async (selectedUser: UserInfo) => {
+      if (!currentUser || !searchedUsers) return;
+  
+      const combinedId =
+        currentUser.uid > selectedUser.uid
+          ? currentUser.uid + selectedUser.uid
+          : selectedUser.uid + currentUser.uid;
+  
+      try {
+        const res = await getDoc(doc(db, "chats", combinedId)); //query to get the information about the chat of 2 users
+  
+        if (!res.exists()) {
+          await setDoc(doc(db, "chats", combinedId), {
+            messages: [],
+          });
+        }
+  
+        await updateDoc(doc(db, "userChats", currentUser.uid), { //list of chats
+          [combinedId + ".userInfo"]: {
+            uid: selectedUser.uid,
+            displayName: selectedUser.displayName
+          },
+          // [combinedId + ".date"]: serverTimestamp(),
+        });
+        await updateDoc(doc(db, "userChats", selectedUser.uid), {
+          [combinedId + ".userInfo"]: {
+            uid: currentUser.uid,
+            displayName: currentUser.displayName,
+            photoURL: currentUser.photoURL,
+          },
+          // [combinedId + ".date"]: serverTimestamp(),
+        });
+  
+       console.log("/chat/" + combinedId)
+        navigate("/chat/" + combinedId);
+      } catch (error) {
+        console.log(error);
+      }
+  
+      setSearchedUsers([]);
+      setInput("");
+    };
+
 
     return (
         <div>
@@ -48,7 +97,7 @@ function Search () {
             <button onClick={search}><img alt="search" src={picture}/></button>
             </div>
             
-            <div>{searchedUsers.map((el) => <div>
+            <div>{searchedUsers.map((el) => <div onClick={()=> handleSelect(el)}>
                 <div>{el.displayName}</div>
                 <div>{el.email}</div>
                 </div>)}</div>

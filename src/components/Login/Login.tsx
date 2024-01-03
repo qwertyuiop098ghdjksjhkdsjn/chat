@@ -29,8 +29,8 @@ signInWithEmailAndPassword(auth, email, password)
     return (
         <div>
             <form onSubmit={logIn}>
-                <input placeholder="enter your password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-                <input placeholder="enter your email"  value={email} onChange={(e) => setEmail(e.target.value)}/>
+                <input placeholder="enter your password" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                <input placeholder="enter your email" type="email"  value={email} onChange={(e) => setEmail(e.target.value)}/>
                 <button>submit</button>
             </form>
         </div>
