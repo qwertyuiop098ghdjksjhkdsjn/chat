@@ -1,0 +1,18 @@
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+}
+
+.message {
+    background: rgba(255, 255, 255, 0.156);
+    padding: 10px;
+    border-radius: 12px;
+    align-self: flex-start;
+}
+
+.message.right {
+    align-self: flex-end;
+}

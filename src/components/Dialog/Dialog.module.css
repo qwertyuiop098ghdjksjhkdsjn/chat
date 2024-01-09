@@ -1,4 +1,11 @@
 
 .container {
     color: white;
+    flex-grow: 1;
+}
+
+.header {
+    padding: 10px;
+    background-color:  #4a6fa388;
+    border: 1px solid black;
 }
