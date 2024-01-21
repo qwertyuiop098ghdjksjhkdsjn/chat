@@ -4,6 +4,7 @@
     flex-direction: column;
     gap: 5px;
     padding: 10px;
+    height: calc(100vh - 97px);
 }
 
 .message {
@@ -11,8 +12,17 @@
     padding: 10px;
     border-radius: 12px;
     align-self: flex-start;
+    font-size: 20px;
 }
 
 .message.right {
     align-self: flex-end;
+}
+
+@media screen and (max-width: 1050px) {
+
+.container{
+    height: calc(100vh - 130px);
+}
+
 }

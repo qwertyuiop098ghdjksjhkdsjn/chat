@@ -1,0 +1,41 @@
+
+.main {
+    min-height: 100vh;
+    background-color:  #102C54;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 300px;
+}
+
+.main input {
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.main button {
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 17px;
+    background-color: rgba(255, 255, 255, 0.771);
+}
+
+.main button:hover {
+    background-color: #ffffff8a;
+}
+
+.main h1 {
+    color: #ffffffe1;
+}
+
+.back {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}

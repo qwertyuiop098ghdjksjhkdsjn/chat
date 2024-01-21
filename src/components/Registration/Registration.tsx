@@ -2,6 +2,8 @@ import { useState } from "react"
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, db } from "./../../fireBase"
 import { doc, getDoc, setDoc } from "firebase/firestore";
+import styles from "./../Login/Logins.module.css"
+import { useNavigate } from "react-router-dom";
 
 function Registration () {
     
@@ -30,10 +32,18 @@ function Registration () {
         
     }
 
+    const navigate = useNavigate();
+
+    function navigation () {
+      navigate("/")
+    }
+
     return (
 
-        <div>
+        <div className={styles.main}>
+            <button onClick={navigation} className={styles.back}>back to main page</button>
             <form onSubmit={submit}>
+                <h1>Sign Up</h1>
                 <input placeholder="enter your password" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                 <input placeholder="enter your email" type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
                 <input placeholder="enter your nickname" type="text" value={nickname} onChange={(e) => setNickname(e.target.value)}/>

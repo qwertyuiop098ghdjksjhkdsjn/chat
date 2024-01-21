@@ -91,13 +91,13 @@ function Search () {
 
 
     return (
-        <div>
+        <div className={styles.main}>
             <div className={styles.search}>
                 <input placeholder="search" value={input} onChange={(e)=> setInput(e.target.value)}/>
             <button onClick={search}><img alt="search" src={picture}/></button>
             </div>
             
-            <div>{searchedUsers.map((el) => <div onClick={()=> handleSelect(el)}>
+            <div className={styles.block}>{searchedUsers.map((el) => <div onClick={()=> handleSelect(el)}>
                 <div>{el.displayName}</div>
                 <div>{el.email}</div>
                 </div>)}</div>

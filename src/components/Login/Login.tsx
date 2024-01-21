@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "./../../fireBase"
+import styles from "./Logins.module.css"
+import { useNavigate } from "react-router-dom";
 
 function Login () {
 
@@ -26,9 +28,17 @@ signInWithEmailAndPassword(auth, email, password)
 
     }
 
+    const navigate = useNavigate();
+
+    function navigation () {
+      navigate("/")
+    }
+
     return (
-        <div>
+        <div className={styles.main}>
+          <button onClick={navigation} className={styles.back}>back to main page</button>
             <form onSubmit={logIn}>
+                <h1>Log In</h1>
                 <input placeholder="enter your password" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                 <input placeholder="enter your email" type="email"  value={email} onChange={(e) => setEmail(e.target.value)}/>
                 <button>submit</button>

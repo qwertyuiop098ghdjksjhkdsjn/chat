@@ -3,6 +3,8 @@ import {doc, updateDoc, arrayUnion, Timestamp} from "firebase/firestore"
 import { db } from "../../fireBase";
 import { v4 as uuid } from "uuid";
 import { useUser } from "../../context/UserContext";
+import styles from "./Send.module.css"
+import image from "./../../images/send.svg"
 
 interface Props {
     chatID: string;
@@ -31,9 +33,9 @@ function Send (props: Props) {
     }
 
     return (
-        <div>
-            <input value={input} onChange={(e) => setInput(e.target.value)}/>
-            <button onClick={sendMessage}>send</button>
+        <div className={styles.box}>
+            <input className={styles.input} value={input} onChange={(e) => setInput(e.target.value)}/>
+            <button className={styles.send} onClick={sendMessage}><img alt="send" src={image}/></button>
         </div>
     )
 }

@@ -1,10 +1,10 @@
 import styles from "./Chats.module.css"
 import { getDoc, doc, onSnapshot } from "firebase/firestore";
-import { db } from "../../fireBase";
+import { db, auth } from "../../fireBase";
 import { useEffect, useState } from "react";
 import { useUser } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
-
+import {signOut} from "firebase/auth";
 
 interface ChatData {
   [key: string]: { userInfo: {displayName: string; uid: string;}} //[key: string] is used because number of key is numerous
@@ -60,8 +60,9 @@ function Chats () {
 
     return (
         <div className={styles.chats}>
-            <div>{chats.map((el) => <div onClick={()=>handleSelect(el.chatId)}>{el.userInfo.displayName}</div>)}
+            <div className={styles.container}>{chats.map((el) => <div className={styles.item} onClick={()=>handleSelect(el.chatId)}>{el.userInfo.displayName}</div>)}
             </div>
+            <button className={styles.signOut} onClick={()=>signOut(auth)}>log out</button>
         </div>
     )
 }

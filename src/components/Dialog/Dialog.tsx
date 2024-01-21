@@ -1,12 +1,11 @@
 import { useParams } from "react-router-dom"
 import {getDoc, doc} from "firebase/firestore"
-import {db, auth} from "./../../fireBase"
+import {db} from "./../../fireBase"
 import { useEffect, useState } from "react"
 import { useUser } from "../../context/UserContext" 
 import styles from "./Dialog.module.css"
 import Send from "../Send/Send"
 import ChatWindow from "../ChatWindow/ChatWindow"
-import {signOut} from "firebase/auth";
 
 interface CurrentUser {
     uid: string;
@@ -45,7 +44,6 @@ function Dialog () {
     return (
         <div className={styles.container}>
             <div className={styles.header}>{currentUserInfo?.displayName}
-            <button onClick={()=>signOut(auth)}>log out</button>
             </div>
             <ChatWindow/>
             <Send chatID={chatID}/>

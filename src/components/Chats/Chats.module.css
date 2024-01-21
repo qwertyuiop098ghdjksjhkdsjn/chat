@@ -1,0 +1,24 @@
+
+
+.chats {
+    /* height: calc(100vh - 80px); */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    padding-bottom: 1px;
+    flex-basis: 100%;
+}
+
+.signOut{
+    align-self: flex-start;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.item {
+    cursor: pointer;
+    color: white;
+}
+
+
